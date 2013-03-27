@@ -10,11 +10,11 @@ void main() {
 }
 
 void fetchUser(String user) {
-  new HttpRequest.get('https://api.github.com/users/$user', onSuccess);
+  HttpRequest.getString('https://api.github.com/users/$user').then(onSuccess);
 }
 
-void onSuccess(HttpRequest req) {
-  Map user = JSON.parse(req.responseText);
+void onSuccess(String req) {
+  Map user = parse(req);
   displayUser(user);
 }
 
